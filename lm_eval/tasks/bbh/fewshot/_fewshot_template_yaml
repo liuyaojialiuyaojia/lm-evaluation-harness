@@ -16,5 +16,7 @@ generation_kwargs:
     - "\n\n"
   do_sample: false
   temperature: 0.0
+num_fewshot: 0
 metadata:
-  - version: 0
+  version: 1.0
+  num_fewshot: 3 # will be printed in results table
