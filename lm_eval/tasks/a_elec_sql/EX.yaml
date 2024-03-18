@@ -1,26 +1,29 @@
 group: a_elec_sql
 task: elec-sql-ex
 
-# dataset
+# Dataset
+# huggingface dataset
 # dataset_path: yaojialzc/elec-sql-test
 # dataset_name: null
 # test_split: test
 # fewshot_split: null
 # process_docs: !function utils.process_docs
-# for testing
+# local dataset
 dataset_path: json
 dataset_name: null
 dataset_kwargs:
-  data_files: Qwen1.5/dataset/multitable/test_dataset.json
+  data_files: Qwen1.5/dataset/multitable/train_dataset.json
 test_split: train
 fewshot_split: null
 
-# prompting
+# Prompting
 doc_to_text: "<|im_start|>system\n{{instruction}}<|im_end|>\n<|im_start|>user\n{{input}}<|im_end|>\n<|im_start|>assistant"
 target_delimiter: "\n"
 doc_to_target: "{{output}}"
 
 metric_list:
   - metric: !function utils.evaluator_wrapper
-    higher_is_better: true
     aggregation: mean
+    higher_is_better: true
+  - metric: bleu
+

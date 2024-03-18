@@ -1,4 +1,4 @@
-import datasets, re
+import datasets, re, os
 from mysql.connector import Error
 from mysql.connector.pooling import MySQLConnectionPool
 test_counter = 0
@@ -9,10 +9,10 @@ with open("Qwen1.5/test-output.txt", "w") as f:
 pool = MySQLConnectionPool(
     pool_name="mypool",
     pool_size=5,
-    host="rm-8vbc9w1qz2f0d533ulo.mysql.zhangbei.rds.aliyuncs.com",
+    host=os.environ.get("DB_HOST"),
     port="3306",
     user="ai_sgcc",
-    password="Gaimima123",
+    password=os.environ.get("DB_PASSWORD"),
     database="text-to-sql-data"
 )
 def get_connection():
