@@ -43,7 +43,6 @@ def evaluator_wrapper(references, predictions):
 
 # exec accuracy evaluation
 def evaluator(query1, query2):
-    '''比较两个查询的结果是否相同'''
     results1 = connect_execute_query(query1)
     results2 = connect_execute_query(query2)
 
@@ -61,7 +60,6 @@ def evaluator(query1, query2):
     return int(sorted_results1 == sorted_results2)
 
 def connect_execute_query(query):
-    '''连接数据库并执行查询'''
     connection = None
     cursor = None
     try:
@@ -85,19 +83,6 @@ def connect_execute_query(query):
 
 # extractor
 def extract_first_select_statement(text):
-    """
-    从文本中提取第一个 SELECT SQL 语句。
-
-    参数:
-    text (str): 输入文本，可能包含多个 SQL 语句。
-    
-    返回:
-    str: 第一个出现的 SELECT SQL 语句，或 None 如果没有找到。
-    
-    示例:
-    >>> extract_first_select_statement("some text\\nSELECT column1 FROM table;")
-    'SELECT column1 FROM table'
-    """
     match = re.search(r"(SELECT|select)(.|\n)*?(;|$)", text)
     if match:
         return match.group(0).rstrip(';')

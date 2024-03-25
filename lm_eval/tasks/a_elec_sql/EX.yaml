@@ -2,14 +2,13 @@ group: a_elec_sql
 task: elec-sql-ex
 
 # Dataset
-# huggingface dataset
-# dataset_path: yaojialzc/elec-sql-test
+# dataset_path: yaojialzc/elec-sql-test # huggingface dataset
 # dataset_name: null
 # test_split: test
 # fewshot_split: null
 # process_docs: !function utils.process_docs
-# local dataset
-dataset_path: json
+
+dataset_path: json # local dataset
 dataset_name: null
 dataset_kwargs:
   data_files: Qwen1.5/dataset/multitable/train_dataset.json
